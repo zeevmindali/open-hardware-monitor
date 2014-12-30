@@ -59,7 +59,7 @@ namespace OpenHardwareMonitor.Hardware.Nvidia {
 
       int value;
       if (NVAPI.NvAPI_GPU_GetTachReading != null &&
-        NVAPI.NvAPI_GPU_GetTachReading(handle, out value) == NvStatus.OK) {
+ =       NVAPI.NvAPI_GPU_GetTachReading(handle, out value) == NvStatus.OK) {
         if (value > 0) {
           fan = new Sensor("GPU", 0, SensorType.Fan, this, settings);
           ActivateSensor(fan);
@@ -465,9 +465,4 @@ namespace OpenHardwareMonitor.Hardware.Nvidia {
         coolerLevels.Version = NVAPI.GPU_COOLER_LEVELS_VER;
         coolerLevels.Levels = new NvLevel[NVAPI.MAX_COOLER_PER_GPU];
         coolerLevels.Levels[0] = initialFanSpeedValue;
-        NVAPI.NvAPI_GPU_SetCoolerLevels(handle, 0, ref coolerLevels);
-        restoreDefaultFanSpeedRequired = false;
-      }
-    }
-  }
-}
+ 
